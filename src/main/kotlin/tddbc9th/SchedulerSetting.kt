@@ -1,6 +1,5 @@
 package tddbc9th
 
-class SchedulerSetting {
-
+class SchedulerSetting(val hour: Int = 0) {
 
 }
