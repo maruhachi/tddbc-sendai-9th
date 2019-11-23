@@ -29,11 +29,10 @@ object SchedulerSettingSpec : Spek({
             }
         }
 
-        describe("時刻が一致するか判断"){
-            it("「32 9 18」と実行時刻18時9分32秒が一致する"){
-                Assertions.assertTrue(schedulerSetting.isMatch("32 9 18"))
-            }
-
-        }
+        //TODO 時刻オブジェクトを作ったら再開する
+//        describe("時刻が一致するか判断"){
+//            it("「32 9 18」と実行時刻18時9分32秒が一致する"){
+//            }
+//        }
     }
 })
