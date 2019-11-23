@@ -23,7 +23,7 @@ object SchedulerSettingSpec : Spek({
             it("スケジューラ設定「32 9 18」と実行時刻18時9分32秒が一致する"){
                 Assertions.assertTrue(schedulerSetting.isMatch(Time(18, 9, 32)))
             }
-            it("スケジューラ設定「32 9 18」と時刻8時7分15秒が一致しなi") {
+            it("スケジューラ設定「32 9 18」と時刻8時7分15秒が一致しない") {
                 Assertions.assertFalse(schedulerSetting.isMatch(Time(8, 7, 15)))
             }
         }
