@@ -1,7 +1,5 @@
 package tddbc9th
 
-class SchedulerSetting(val hour: Int = 0, val minute: Int = 0, val second: Int = 0) {
-    fun getString(): String {
-
-    }
+class SchedulerSetting(val hour: Int, val minute: Int, val second: Int) {
+    fun getString() = "$second $minute $hour"
 }

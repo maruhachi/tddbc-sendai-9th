@@ -6,7 +6,7 @@ import org.spekframework.spek2.style.specification.describe
 
 object SchedulerSettingSpec : Spek({
     describe("スケジューラー設定クラス") {
-        var schedulerSetting: SchedulerSetting = SchedulerSetting()
+        var schedulerSetting: SchedulerSetting = SchedulerSetting(hour = 0, minute = 0, second = 0)
         beforeEachTest {
             schedulerSetting = SchedulerSetting(hour = 18, minute = 9, second = 32)
         }
