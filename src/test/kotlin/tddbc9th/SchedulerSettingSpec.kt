@@ -8,7 +8,7 @@ object SchedulerSettingSpec : Spek({
     describe("スケジューラー設定クラス") {
         // 0,0,0は初期化のための無意味な値
         var time = Time(18, 9, 32)
-        var schedulerSetting
+        var schedulerSetting = SchedulerSetting(Time(0, 0, 0))
         beforeEachTest {
             schedulerSetting = SchedulerSetting(time)
         }
@@ -21,7 +21,10 @@ object SchedulerSettingSpec : Spek({
 
         describe("時刻が一致するか判断"){
             it("スケジューラ設定「32 9 18」と実行時刻18時9分32秒が一致する"){
-
+                Assertions.assertTrue(schedulerSetting.isMatch(Time(18, 9, 32)))
+            }
+            it("スケジューラ設定「32 9 18」と時刻8時7分15秒が一致しなi") {
+                Assertions.assertFalse(schedulerSetting.isMatch(Time(8, 7, 15)))
             }
         }
     }
