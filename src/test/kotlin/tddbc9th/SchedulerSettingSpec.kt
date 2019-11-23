@@ -12,8 +12,12 @@ object SchedulerSettingSpec : Spek({
                 Assertions.assertNotNull(schedulerSetting)
             }
             it("時間を保持する") {
-                val schedulerSetting = SchedulerSetting(18)
+                val schedulerSetting = SchedulerSetting(hour = 18)
                 Assertions.assertEquals(18, schedulerSetting.hour)
+            }
+            it("分を保持する") {
+                val schedulerSetting = SchedulerSetting(minute = 9)
+                Assertions.assertEquals(9, schedulerSetting.minute)
             }
         }
     }
