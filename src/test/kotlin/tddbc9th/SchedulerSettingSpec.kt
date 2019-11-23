@@ -7,20 +7,10 @@ import org.spekframework.spek2.style.specification.describe
 object SchedulerSettingSpec : Spek({
     describe("スケジューラー設定クラス") {
         // 0,0,0は初期化のための無意味な値
-        var schedulerSetting: SchedulerSetting = SchedulerSetting(hour = 0, minute = 0, second = 0)
+        var time = Time(18, 9, 32)
+        var schedulerSetting
         beforeEachTest {
-            schedulerSetting = SchedulerSetting(hour = 18, minute = 9, second = 32)
-        }
-        describe("時刻 (時、分、秒)を与えて、スケジューラー設定オブジェクトを作成") {
-            it("時間を保持する") {
-                Assertions.assertEquals(18, schedulerSetting.hour)
-            }
-            it("分を保持する") {
-                Assertions.assertEquals(9, schedulerSetting.minute)
-            }
-            it("秒を保持する") {
-                Assertions.assertEquals(32, schedulerSetting.second)
-            }
+            schedulerSetting = SchedulerSetting(time)
         }
 
         describe("スケジューラー設定オブジェクトの時刻の文字列表現を取得"){
@@ -29,10 +19,10 @@ object SchedulerSettingSpec : Spek({
             }
         }
 
-        //TODO 時刻オブジェクトを作ったら再開する
-//        describe("時刻が一致するか判断"){
-//            it("「32 9 18」と実行時刻18時9分32秒が一致する"){
-//            }
-//        }
+        describe("時刻が一致するか判断"){
+            it("スケジューラ設定「32 9 18」と実行時刻18時9分32秒が一致する"){
+
+            }
+        }
     }
 })
