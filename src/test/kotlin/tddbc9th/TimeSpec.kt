@@ -19,5 +19,9 @@ object TimeSpec : Spek({
         it("18時9分32秒を与えると秒として32を返す"){
             Assertions.assertEquals(time.second , 32)
         }
+        it("時刻18時9分32秒 と 時刻18時9分32秒 は一致する") {
+            var opponentTime = Time(18, 9, 32)
+            Assertions.assertTrue(time.isMatch(opponentTime))
+        }
     }
 })
