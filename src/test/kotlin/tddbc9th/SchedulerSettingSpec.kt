@@ -37,19 +37,31 @@ object SchedulerSettingSpec : Spek({
             }
         }
     }
-    describe("スケジュ-ラ-設定クラスの毎時・毎分・毎秒に対応した拡張") {
-        describe("毎時、毎分、毎秒を設定した箇所の文字列表現は *(アスタリスク) "){
-            it("スケジューラー設定に 毎時、9、32 を与えると、その文字列表現は文字列 「32 9 *」"){
-                val schedulerSetting = SchedulerSetting(Time("*", "9", "32"))
-                Assertions.assertEquals("32 9 *", schedulerSetting.getString())
+    describe("スケジューラ設定クラスの毎時・毎分・毎秒に対応した拡張") {
+        listOf(
+            listOf("32 9 *",Time("毎時", "9", "32")),
+            listOf("0 * 0", Time("0", "毎分", "0")),
+            listOf("* 59 23", Time("23", "59", "毎秒"))
+        ).forEach { test ->
+            describe("毎時、毎分、毎秒を設定した箇所の文字列表現は *(アスタリスク) "){
+                it("スケジューラー設定に 毎時、9、32 を与えると、その文字列表現は文字列 「32 9 *」"){
+                    val schedulerSetting = SchedulerSetting(test[1] as Time)
+                    Assertions.assertEquals(test[0], schedulerSetting.getString())
+                }
             }
         }
         describe("秒を*にしたとき、任意の時・分の0〜59秒の範囲で一致する") {
-            it("スケジューラ設定「* 9 18」と実行時刻18時9分0秒が一致する") {
-                // TODO: 渡すのは*じゃなくて毎秒 という日本語
-                val schedulerSetting = SchedulerSetting(Time("18", "9", "*"))
-                // TODO: 名前の付け方。書いたときに英語として語順がわかりやすい名前
-                Assertions.assertTrue(schedulerSetting.isTimeMatch(Time("18", "9", "0")))
+            listOf(
+                Time("18", "9", "0"),
+                Time("18", "9", "30"),
+                Time("18", "9", "59")
+            ).forEach { testParam ->
+                it("スケジューラ設定「* 9 18」と実行時刻18時9分${testParam.second}秒で一致する") {
+                    // TODO: 渡すのは*じゃなくて毎秒 という日本語
+                    val schedulerSetting = SchedulerSetting(Time("18", "9", "毎秒"))
+                    // TODO: 名前の付け方。書いたときに英語として語順がわかりやすい名前
+                    Assertions.assertTrue(schedulerSetting.isTimeMatch(testParam))
+                }
             }
         }
     }
